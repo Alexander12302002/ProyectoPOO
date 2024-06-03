@@ -1,50 +1,32 @@
-export class mounstros{
-    #vida = 100
-    #Def = 50
-    #atq = 10
-    constructor(){
+export class Criatura {
+    constructor(nombre, vida, ataque, Def) {
+      this.nombre = nombre;
+      this.vida = vida;
+      this.ataque = ataque;
+      this.Def = Def
+    }
+  }
 
+export class Monstruo extends Criatura {
+    constructor(nombre, vida, ataque, Def) {
+      super(nombre, vida, ataque, Def);
     }
-    set setNombre(nom){
-        this.nombre = nom
+  }
+  
+export class Orco extends Monstruo {
+    constructor() {
+      super("Orco", 200, 20, 50);
     }
-    set setVida(vida){
-        this.#vida += vida
+  }
+  
+export class Goblin extends Monstruo {
+    constructor() {
+      super("Goblin", 150, 15, 25);
     }
-    set setDefensa(def){
-        this.#Def += def
+  }
+  
+export class Kobold extends Monstruo {
+    constructor() {
+      super("Kobold", 100, 10, 10);
     }
-    set setAtaque(atq){
-        this.#atq += atq
-    }
-}
-
-export class Kobold extends mounstros{
-    constructor(){
-        super();
-        this.setNombre = "Kobold";
-        this.setVida = 100;
-        this.setDefensa = 50;
-        this.setAtaque = 10;
-    }
-}
-
-export class Goblin extends mounstros{
-    constructor(){
-        super();
-        this.setNombre = "Goblin";
-        this.setVida = 80;
-        this.setDefensa = 25;
-        this.setAtaque = 15;
-    }
-}
-
-export class Orco extends mounstros{
-    constructor(){
-        super();
-        this.setNombre = "Orco";
-        this.setVida = 200;
-        this.setDefensa = 100;
-        this.setAtaque = 20;
-    }
-}
+  }
