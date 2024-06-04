@@ -20,10 +20,11 @@ function juegoPrincipal() {
     while (true) {
         if (juego.monstruo && juego.monstruo.vida > 0) {
             const accion = prompt("¿Qué quieres hacer? 'Atacar', 'Usar poción' (o 'Salir' para terminar el juego)");
-    
         if (accion.toLowerCase() === 'salir') {
             alert("Gracias por jugar!");
             break;
+        } else if (accion.toLowerCase() === 'usar pocion') {
+            juego.usarPocion(heroe);
         } else if (accion.toLowerCase() === 'atacar') {
             juego.atacar(heroe);
             if (heroe.vida <= 0) {
