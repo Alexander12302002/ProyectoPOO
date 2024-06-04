@@ -4,6 +4,7 @@ export class Juego{
     constructor() {
         this.historial = [];
         this.monstruo = null;
+        this.inventario = new Inventario();
     }
 
     loguear(mensaje) {
@@ -44,5 +45,33 @@ export class Juego{
 
         this.loguear(`Tu vida: ${heroe.vida}, Vida del ${this.monstruo.nombre}: ${this.monstruo.vida}`);
     }
+
+    usarPocion(heroe) {
+        if (this.inventario.usarPocion()) {
+            heroe.vida += 50; 
+            this.loguear(`${heroe.nombre} usa una poción y recupera 50 puntos de vida. Vida actual: ${heroe.vida}`);
+        } else {
+            this.loguear("No te quedan pociones.");
+        }
+    }
 }   
 
+class Inventario {
+    constructor() {
+        this.items = {
+            pociones: 3 
+        };
+    }
+
+    usarPocion() {
+        if (this.items.pociones > 0) {
+            this.items.pociones -= 1;
+            return true;
+        }
+        return false;
+    }
+
+    agregarPocion(cantidad = 1) {
+        this.items.pociones += cantidad;
+    }
+}
